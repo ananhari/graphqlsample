@@ -60,7 +60,7 @@ const AuthorType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
     name:'RootQueryType',
     fields:{
-        book:{
+        getbookbyId:{
             type:BookType,
             args: {id:{type:GraphQLID}},
             resolve(parent,args){  
@@ -69,7 +69,7 @@ const RootQuery = new GraphQLObjectType({
                return Book.findById(args.id)
             }
         },
-        author:{
+        getauthorbyId:{
             type:AuthorType,
             args: {id:{type:GraphQLID}},
             resolve(parent,args){  
@@ -78,7 +78,7 @@ const RootQuery = new GraphQLObjectType({
               return Author.findById(args.id)
             }
         },
-        books:{
+        getlistofbooks:{
             type:new GraphQLList(BookType),
             resolve(parent,args){  
                 //code to get data from db/other source
@@ -86,7 +86,7 @@ const RootQuery = new GraphQLObjectType({
                return Book.find({});
             }
         },
-        authors:{
+        getlistofauthors:{
             type:new GraphQLList(AuthorType),
             resolve(parent,args){  
                 //code to get data from db/other source
